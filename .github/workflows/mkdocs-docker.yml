@@ -3,35 +3,21 @@ on:
   push:
     branches: [ main ]
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  build:
+  gh-pages:
     runs-on: ubuntu-latest
     container:
       image: squidfunk/mkdocs-material:latest
     defaults:
       run:
-        working-directory: mysite
+        working-directory: mysite          # 你的 mkdocs.yml 在這裡
     steps:
       - uses: actions/checkout@v4
       - run: pip install mkdocs-awesome-pages-plugin mkdocs-exclude mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: mysite/site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - run: git config --global user.name "github-actions[bot]"
+      - run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE/mysite"
+      - run: mkdocs gh-deploy --force
