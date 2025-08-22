@@ -1,0 +1,14 @@
+name: build-and-deploy-docker
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: squidfunk/mkdocs-material:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdocs gh-deploy --force

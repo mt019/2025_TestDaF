@@ -1,0 +1,34 @@
+site_name: My TestDaf
+site_url: https://example.com
+theme:
+  name: material
+  font:
+    text: Noto Sans
+    code: JetBrains Mono
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourname
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/yourname
+repo_url: https://github.com/mt019/2025_TestDaf
+repo_name: mt019
+edit_uri: edit/main/docs/
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: "2-3"
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+plugins:
+  - search
+  - awesome-pages
+extra_css:
+  - assets/extra.css
+extra_javascript:
+  - assets/extra.js
