@@ -1,10 +1,10 @@
+version: "3"
 services:
   docs:
-    image: mkdocs-material-plus        # 或改成: build: . 以本地 Dockerfile 构建
-    build: .                           # 两者留其一；若已构建过镜像，可删掉这一行
-    volumes:
-      - ./mysite:/docs                 # 只挂载你的网站目录
-    working_dir: /docs
+    build: .                 # 用上面的 Dockerfile
     ports:
       - "8000:8000"
-    command: serve -a 0.0.0.0:8000     # 直接用 mkdocs 的 serve 命令
+    volumes:
+      - ./:/work
+    working_dir: /work/mysite
+    command: serve -a 0.0.0.0:8000
