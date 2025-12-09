@@ -1,0 +1,20 @@
+:root {
+  --md-primary-fg-color: #de5871cb;       /* 粉红（hotpink） */
+  --md-accent-fg-color: #5a5a5a;        /* 优雅深灰 */
+  --md-default-bg-color: #fff0f5;       /* 淡粉底色 (lavenderblush) */
+}
+
+/* 滚动条自定义 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #3a2f2f;    /* 棕深灰轨道 */
+}
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;    /* 浅灰滑块 */
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
